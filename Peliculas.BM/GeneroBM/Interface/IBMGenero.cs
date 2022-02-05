@@ -11,6 +11,8 @@ namespace Peliculas.BM.GeneroBM.Interface
     {
         Task<List<GeneroDTO>> ConsultarGenerosAsync();
         Task<GeneroDTO> ConsultarGeneroByIdAsync(int id);
-        Task<bool> CrearGeneroAsync(GeneroCreacionDTO generoCreacionDTO);
+        Task<GeneroDTO?> CrearGeneroAsync(GeneroCreacionDTO generoCreacionDTO);
+        Task<bool> ActualizacionGeneroAsync(int id, GeneroCreacionDTO generoCreacionDTO);
+        Task<bool?> EliminarGeneroAsync(int id);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pelicula.DM;
+using Peliculas.Soporte.Mapper;
 
 namespace Peliculas.API
 {
@@ -17,10 +18,13 @@ namespace Peliculas.API
             //Configuración del EntityFramework
             services.AddDbContext<ApplicationDbContext>(opciones => opciones.UseSqlServer(configuration.GetConnectionString("defualtConnection")));
 
-
             services.AddControllers();
             services.AddEndpointsApiExplorer();
+
+            //Servicio de automapper
+            services.AddAutoMapper(typeof(AutoMapperProfile));
         }
+
 
 
 

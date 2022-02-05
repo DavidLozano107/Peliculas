@@ -14,7 +14,7 @@ namespace Peliculas.Soporte.Mapper
         public AutoMapperProfile()
         {
             CreateMap<Genero,GeneroDTO>().ReverseMap();
-            CreateMap<GeneroCreacionDTO,Genero>().ReverseMap();
+            CreateMap<GeneroCreacionDTO,Genero>();
         }
 
     }
