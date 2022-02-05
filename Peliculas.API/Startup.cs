@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pelicula.DM;
+using Peliculas.BM.GeneroBM;
+using Peliculas.BM.GeneroBM.Interface;
 using Peliculas.Soporte.Mapper;
 
 namespace Peliculas.API
@@ -23,6 +25,10 @@ namespace Peliculas.API
 
             //Servicio de automapper
             services.AddAutoMapper(typeof(AutoMapperProfile));
+
+
+            //Inyección de dependencias
+            services.AddTransient<IBMGenero, BMGenero>();
         }
 
 
