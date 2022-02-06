@@ -12,6 +12,6 @@ namespace Peliculas.DT.DTOs.GeneroDTOs
         public int Id { get; set; }
         [Required]
         [StringLength(40)]
-        public string Nombre { get; set; }
+        public string Nombre { get; set; } = String.Empty;
     }
 }

@@ -38,7 +38,7 @@ namespace Peliculas.BM.GeneroBM
 
         }
 
-        public async Task<GeneroDTO> ConsultarGeneroByIdAsync(int id)
+        public async Task<GeneroDTO?> ConsultarGeneroByIdAsync(int id)
         {
             var genero = await context.Generos.FirstOrDefaultAsync(x => x.Id == id);
             if (genero is null) { return null; }
@@ -48,7 +48,7 @@ namespace Peliculas.BM.GeneroBM
 
         }
 
-        public async Task<List<GeneroDTO>> ConsultarGenerosAsync()
+        public async Task<List<GeneroDTO>?> ConsultarGenerosAsync()
         {
             var listaGeneros = await context.Generos.ToListAsync();
             if (listaGeneros is null) { return null; }

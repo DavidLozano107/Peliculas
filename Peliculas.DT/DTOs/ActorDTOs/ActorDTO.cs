@@ -5,13 +5,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Peliculas.DT.Entidades
+namespace Peliculas.DT.DTOs.ActorDTOs
 {
-    public class Genero
+    public class ActorDTO
     {
         public int Id { get; set; }
         [Required]
-        [StringLength(40)]
+        [StringLength(140)]
         public string Nombre { get; set; } = String.Empty;
+        public DateTime FechaNacimiento { get; set; }
+        public string? Foto { get; set; }
     }
 }

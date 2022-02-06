@@ -1,7 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pelicula.DM;
+using Peliculas.API.Helper;
+using Peliculas.BM.ActorBM;
+using Peliculas.BM.ActorBM.Interface;
 using Peliculas.BM.GeneroBM;
 using Peliculas.BM.GeneroBM.Interface;
+using Peliculas.BM.Helper.AlmacenarArchivos.Interfaces;
+using Peliculas.BM.Helper.GuardarArchivos;
 using Peliculas.Soporte.Mapper;
 
 namespace Peliculas.API
@@ -22,6 +27,7 @@ namespace Peliculas.API
 
             services.AddControllers();
             services.AddEndpointsApiExplorer();
+            services.AddHttpContextAccessor();
 
             //Servicio de automapper
             services.AddAutoMapper(typeof(AutoMapperProfile));
@@ -29,6 +35,12 @@ namespace Peliculas.API
 
             //Inyección de dependencias
             services.AddTransient<IBMGenero, BMGenero>();
+            services.AddTransient<IBMActor, BMActor>();
+
+            //Helper
+            services.AddTransient<IAlmacenadorArchivos, AlmacenadorArchivosAzure>();
+            //services.AddTransient<IAlmacenadorArchivos, AlmacenadorArchivosLocal>();
+
         }
 
 
@@ -40,9 +52,10 @@ namespace Peliculas.API
             {
                 app.UseDeveloperExceptionPage();
             }
-
-
             app.UseHttpsRedirection();
+
+            app.UseStaticFiles();
+
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>

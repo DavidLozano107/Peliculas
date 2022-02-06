@@ -52,8 +52,8 @@ namespace Peliculas.API.Controller
             return new CreatedAtRouteResult("ConsultarGeneroById", new { id = generoDTO.Id }, generoDTO);
         }
 
-        [HttpPut("id:int")]
-        public async Task<ActionResult> Put([FromRoute] int id, [FromBody] GeneroCreacionDTO generoCreacionDTO)
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult> Put(int id, [FromBody] GeneroCreacionDTO generoCreacionDTO)
         {
             var actualizacionExitosa = await BMGenero.ActualizacionGeneroAsync(id, generoCreacionDTO);
 
@@ -65,8 +65,8 @@ namespace Peliculas.API.Controller
             return NoContent();
         }
 
-        [HttpDelete("id:int")]
-        public async Task<ActionResult> Delete([FromRoute] int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult> Delete(int id)
         {
             bool? eliminacionExiotsa = await BMGenero.EliminarGeneroAsync(id);
 

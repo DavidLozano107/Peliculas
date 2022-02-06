@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AccesoDatos", "AccesoDatos"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Negocios", "Negocios", "{EFF096EF-2940-4AF8-9687-7368BCA5A098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peliculas.API", "Peliculas.API\Peliculas.API.csproj", "{76DF24B1-6281-4579-A4FB-C968C65ED8F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peliculas.API", "Peliculas.API\Peliculas.API.csproj", "{76DF24B1-6281-4579-A4FB-C968C65ED8F6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peliculas.DT", "Peliculas.DT\Peliculas.DT.csproj", "{4EBF54D1-7E85-488E-B8D5-F5892B29AA7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peliculas.DT", "Peliculas.DT\Peliculas.DT.csproj", "{4EBF54D1-7E85-488E-B8D5-F5892B29AA7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peliculas.Soporte", "Peliculas.Soporte\Peliculas.Soporte.csproj", "{789506E3-E166-4E32-A54C-504EAC3D1229}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peliculas.Soporte", "Peliculas.Soporte\Peliculas.Soporte.csproj", "{789506E3-E166-4E32-A54C-504EAC3D1229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Peliculas.BM", "Peliculas.BM\Peliculas.BM.csproj", "{6DEEABEB-ABCE-4460-98E9-FF1DD1613026}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Peliculas.BM", "Peliculas.BM\Peliculas.BM.csproj", "{6DEEABEB-ABCE-4460-98E9-FF1DD1613026}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pelicula.DM", "Pelicula.DM\Pelicula.DM.csproj", "{DBDA6EAD-BB9F-4A5C-BD2E-5995388F7410}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pelicula.DM", "Pelicula.DM\Pelicula.DM.csproj", "{DBDA6EAD-BB9F-4A5C-BD2E-5995388F7410}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
