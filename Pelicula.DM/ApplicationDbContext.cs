@@ -16,6 +16,7 @@ namespace Pelicula.DM
 
         public DbSet<Genero> Generos { get; set; }
         public DbSet<Actor> Actores { get; set; }
+        public DbSet<PeliculaEntidad> Peliculas { get; set; }
 
     }
 }

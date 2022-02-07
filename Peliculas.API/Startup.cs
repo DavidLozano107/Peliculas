@@ -7,6 +7,8 @@ using Peliculas.BM.GeneroBM;
 using Peliculas.BM.GeneroBM.Interface;
 using Peliculas.BM.Helper.AlmacenarArchivos.Interfaces;
 using Peliculas.BM.Helper.GuardarArchivos;
+using Peliculas.BM.PeliculaBM;
+using Peliculas.BM.PeliculaBM.Interface;
 using Peliculas.Soporte.Mapper;
 
 namespace Peliculas.API
@@ -36,6 +38,7 @@ namespace Peliculas.API
             //Inyección de dependencias
             services.AddTransient<IBMGenero, BMGenero>();
             services.AddTransient<IBMActor, BMActor>();
+            services.AddTransient<IBMPelicula, BMPelicula>();
 
             //Helper
             services.AddTransient<IAlmacenadorArchivos, AlmacenadorArchivosAzure>();

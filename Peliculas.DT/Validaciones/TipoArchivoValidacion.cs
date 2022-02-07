@@ -21,7 +21,7 @@ namespace Peliculas.DT.Validaciones
         {
             if (grupoTipoArchivo == GrupoTipoArchivo.Imagen)
             {
-                tipoValidos = new string[] {"imagen/jpeg", "imagen/jpg", "image/jpeg", "imagen/png", "imagen/gif" };
+                tipoValidos = new string[] {"imagen/jpeg", "imagen/jpg", "image/jpeg", "imagen/png", "imagen/gif","imagen/png", "image/png" };
             }
         }
 

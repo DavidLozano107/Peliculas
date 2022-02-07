@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Peliculas.DT.DTOs.ActorDTOs;
 using Peliculas.DT.DTOs.GeneroDTOs;
+using Peliculas.DT.DTOs.PeliculaDTOs;
 using Peliculas.DT.Entidades;
 using System;
 using System.Collections.Generic;
@@ -22,6 +23,16 @@ namespace Peliculas.Soporte.Mapper
                 .ForMember(x => x.Foto, op => op.Ignore());
 
             CreateMap<ActorPathcDTO, Actor>().ReverseMap();
+
+            CreateMap<PeliculaEntidad, PeliculaDTO>().ReverseMap();
+
+            CreateMap<PeliculaCreacionDTO, PeliculaEntidad>()
+                .ForMember(x => x.Poster, opciones => opciones.Ignore());
+            CreateMap<PeliculaPatchDTO, PeliculaEntidad>().ReverseMap();
+
+
+
+
         }
 
     }
