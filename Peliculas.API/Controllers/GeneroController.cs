@@ -2,7 +2,7 @@
 using Peliculas.BM.GeneroBM.Interface;
 using Peliculas.DT.DTOs.GeneroDTOs;
 
-namespace Peliculas.API.Controller
+namespace Peliculas.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]

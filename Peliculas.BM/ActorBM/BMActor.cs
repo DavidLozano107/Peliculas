@@ -1,9 +1,13 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc.NewtonsoftJson;
 using Microsoft.EntityFrameworkCore;
 using Pelicula.DM;
+using Peliculas.API.Helper;
 using Peliculas.BM.ActorBM.Interface;
 using Peliculas.BM.Helper.AlmacenarArchivos.Interfaces;
 using Peliculas.DT.DTOs.ActorDTOs;
+using Peliculas.DT.DTOs.PaginacionDTO;
 using Peliculas.DT.Entidades;
 using System;
 using System.Collections.Generic;
@@ -37,7 +41,7 @@ namespace Peliculas.BM.ActorBM
             var actorDb = await context.Actores.FirstOrDefaultAsync(x => x.Id == id);
             if (actorDb == null) { return null; }
 
-            actorDb = mapper.Map(actorCreacionDTO,actorDb);
+            actorDb = mapper.Map(actorCreacionDTO, actorDb);
 
 
             if (actorCreacionDTO.Foto != null)
@@ -47,7 +51,7 @@ namespace Peliculas.BM.ActorBM
                     await actorCreacionDTO.Foto.CopyToAsync(memoryStream);
                     var contenido = memoryStream.ToArray();
                     var extension = Path.GetExtension(actorCreacionDTO.Foto.FileName);
-                    actorDb.Foto = await almacenadorArchivos.EditarArchivoAsync(contenido,extension,contenedor,actorDb.Foto,actorCreacionDTO.Foto.ContentType);
+                    actorDb.Foto = await almacenadorArchivos.EditarArchivoAsync(contenido, extension, contenedor, actorDb.Foto, actorCreacionDTO.Foto.ContentType);
                 }
             }
 
@@ -70,9 +74,13 @@ namespace Peliculas.BM.ActorBM
 
         }
 
-        public async Task<List<ActorDTO>?> ConsultarActoresAsync()
+        public async Task<List<ActorDTO>?> ConsultarActoresAsync(PaginacionDTO paginacionDTO)
         {
-            var actores = await context.Actores.ToListAsync();
+            var queryable = context.Actores.AsQueryable();
+
+            var actores = await queryable
+                .Paginar(paginacionDTO)
+                .ToListAsync();
             if (actores is null)
             {
                 return null;

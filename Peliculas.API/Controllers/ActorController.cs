@@ -1,25 +1,38 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.JsonPatch;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Pelicula.DM;
+using Peliculas.API.Helper;
 using Peliculas.BM.ActorBM.Interface;
 using Peliculas.DT.DTOs.ActorDTOs;
+using Peliculas.DT.DTOs.PaginacionDTO;
 using Peliculas.DT.Entidades;
 
-namespace Peliculas.API.Controller
+namespace Peliculas.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class ActorController : ControllerBase
     {
         private readonly IBMActor bMActor;
+        private readonly IMapper mapper;
+        private readonly ApplicationDbContext context;
 
-        public ActorController(IBMActor bMActor)
+        public ActorController(IBMActor bMActor, IMapper mapper, ApplicationDbContext context )
         {
             this.bMActor = bMActor;
+            this.mapper = mapper;
+            this.context = context;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<ActorDTO>>> Get()
+        public async Task<ActionResult<List<ActorDTO>>> Get([FromQuery] PaginacionDTO paginacionDTO )
         {
-            var actores = await bMActor.ConsultarActoresAsync();
+            var queryable = context.Actores.AsQueryable();
+            await HttpContext.InsertarParametrosPaginacion(queryable,paginacionDTO.CantidadRegistrosPagina);
+
+            var actores = await bMActor.ConsultarActoresAsync(paginacionDTO);
             if (actores is null)
             {
                 return Ok(new List<ActorDTO>());
@@ -68,5 +81,33 @@ namespace Peliculas.API.Controller
             return NoContent();
         
         }
+
+        [HttpPatch("{id:int}")]
+        public async Task<ActionResult> Patch([FromRoute] int id, [FromBody] JsonPatchDocument<ActorPathcDTO> patchDocument  )
+        {
+            if (patchDocument is null)
+            {
+                return BadRequest();
+            }
+
+            var actorDb = await context.Actores.FirstOrDefaultAsync(x => x.Id == id);
+            if (actorDb == null)
+            {
+                return null;
+            }
+
+
+            var actorDTO = mapper.Map<ActorPathcDTO>(actorDb);
+
+            patchDocument.ApplyTo(actorDTO, ModelState);
+            var esValido = TryValidateModel(actorDTO);
+            if (!esValido) { return BadRequest(ModelState);}
+
+            mapper.Map(actorDTO, actorDb);
+            await context.SaveChangesAsync();
+            return NoContent();
+
+        }
+
     }
 }

@@ -20,6 +20,8 @@ namespace Peliculas.Soporte.Mapper
             CreateMap<Actor,ActorDTO>().ReverseMap();
             CreateMap<ActorCreacionDTO, Actor>()
                 .ForMember(x => x.Foto, op => op.Ignore());
+
+            CreateMap<ActorPathcDTO, Actor>().ReverseMap();
         }
 
     }
