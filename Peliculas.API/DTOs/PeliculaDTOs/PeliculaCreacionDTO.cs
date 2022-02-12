@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Peliculas.BM.Helper;
 using Peliculas.DT.Validaciones;
 using Peliculas.Soporte.Validaciones;
 using System;
@@ -22,5 +24,7 @@ namespace Peliculas.DT.DTOs.PeliculaDTOs
         [PesoArchivoValidacion(PesoMaximoEnMegaBytes: 4)]
         [TipoArchivoValidacion(grupoTipoArchivo: GrupoTipoArchivo.Imagen)]
         public IFormFile Poster { get; set; }
+        [ModelBinder(BinderType = typeof(TypeBinder))]
+        public List<int> GeneroIDs { get; set; }
     }
 }
