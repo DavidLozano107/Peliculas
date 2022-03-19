@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Peliculas.BM.Helper
 {
-    public class TypeBinder : IModelBinder
+    public class TypeBinder<T> : IModelBinder
     {
         public Task BindModelAsync(ModelBindingContext bindingContext)
         {
@@ -23,7 +23,7 @@ namespace Peliculas.BM.Helper
 
             try
             {
-                var valorDeserializado = JsonConvert.DeserializeObject<List<int>>(proveedorDeValores.FirstValue);
+                var valorDeserializado = JsonConvert.DeserializeObject<T>(proveedorDeValores.FirstValue);
                 bindingContext.Result = ModelBindingResult.Success(valorDeserializado);
  
             }

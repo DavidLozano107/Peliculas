@@ -16,5 +16,9 @@ namespace Peliculas.DT.Entidades
         public bool EnCines { get; set; }
         public DateTime FechaEstreno { get; set; }
         public string? Poster { get; set; }
+
+        public List<PeliculasActores> PeliculasActores { get; set; }
+        public List<PeliculasGeneros> PeliculasGeneros { get; set; }
+
     }
 }

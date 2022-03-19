@@ -15,5 +15,6 @@ namespace Peliculas.DT.Entidades
         public string Nombre { get; set; } = String.Empty;
         public DateTime FechaNacimiento { get; set; }
         public string? Foto { get; set; }
+        public List<PeliculasActores> PeliculasActores { get; set; }
     }
 }

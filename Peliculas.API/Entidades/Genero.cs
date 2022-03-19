@@ -13,5 +13,6 @@ namespace Peliculas.DT.Entidades
         [Required]
         [StringLength(40)]
         public string Nombre { get; set; } = String.Empty;
+        public List<PeliculasGeneros> PeliculasGeneros { get; set; }
     }
 }
